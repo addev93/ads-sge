@@ -1,0 +1,17 @@
+@startuml
+package "Sistema de Gerenciamento de Estoque" {
+    
+    [Interface de Login] --> [Sistema de Autenticação]
+    
+    [Sistema de Autenticação] --> [Módulo de Registro de Produtos]
+    [Sistema de Autenticação] --> [Módulo de Compras]
+    [Sistema de Autenticação] --> [Módulo de Relatórios]
+    [Sistema de Autenticação] --> [Módulo de Gestão de Usuários]
+    
+    [Módulo de Registro de Produtos] --> [Validador de Nota Fiscal]
+    [Módulo de Compras] --> [Módulo de Produtos]
+    [Módulo de Compras] --> [Módulo de Fornecedores]
+}
+
+@enduml
+

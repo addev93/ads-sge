@@ -1,0 +1,80 @@
+@startuml
+
+entity "Usuário" {
+    +ID: int
+    +Nome: string
+    +Nome_de_usuário: string
+    +Email: string
+    +Senha: string
+}
+
+entity "Produto" {
+    +ID: int
+    +Nome: string
+    +Descrição: string
+    +Categoria: string
+    +Fornecedor1: string
+    +Fornecedor2: string
+    +Fornecedor3: string
+    +Localização_Estoque: string
+    +Saldo: decimal
+}
+
+entity "Categoria" {
+    +ID: int
+    +Nome: string
+}
+
+entity "Fornecedor" {
+    +ID: int
+    +CNPJ: string
+    +Nome_Fantasia: string
+    +Razão_Social: string
+    +Endereço1: string
+    +Endereço2: string
+    +Telefone1: string
+    +Telefone2: string
+    +Representante: string
+}
+
+entity "Movimentação" {
+    +ID: int
+    +Produto_ID: int
+    +Quantidade: decimal
+    +Valor_unitário: decimal
+    +Tipo: string
+    +Nota_fiscal: string
+}
+
+entity "SolicitaçãoDeCompra" {
+    +ID: int
+    +Produto_ID: int
+    +Quantidade: decimal
+    +Solicitante: string
+    +Aprovador: string
+    +Situação: string
+}
+
+entity "PedidoDeCompra" {
+    +ID: int
+    +Número_do_pedido: string
+    +Produto_ID: int
+    +Quantidade: decimal
+    +Valor_unitário: decimal
+    +Valor_total: decimal
+    +Solicitante: string
+    +Fornecedor_ID: int
+    +Nota_fiscal: string
+}
+
+' Relacionamentos
+Usuário ||--o{ SolicitaçãoDeCompra : faz
+Usuário ||--o{ PedidoDeCompra : faz
+Produto ||--o{ Movimentação : contém
+Produto ||--o{ SolicitaçãoDeCompra : é
+Produto ||--o{ PedidoDeCompra : é
+Categoria ||--o{ Produto : classifica
+Fornecedor ||--o{ Produto : fornece
+
+@enduml
+

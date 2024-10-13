@@ -1,0 +1,44 @@
+@startuml
+left to right direction
+
+actor "Usuário" as User
+actor "Estoquista" as StockKeeper
+actor "Gerente de Setor" as DepartmentManager
+actor "Administrador do Sistema" as SystemAdministrator
+
+rectangle "Sistema de Gerenciamento de Estoque" {
+    
+    StockKeeper -- (Fazer Login)
+    DepartmentManager -- (Fazer Login)
+    User -- (Fazer Login)
+    SystemAdministrator -- (Fazer Login)
+        
+    StockKeeper -- (Registrar Entrada de Produtos)
+    StockKeeper -- (Rastrear Localização do Produto)
+
+    (Registrar Entrada de Produtos) ..> (Validar Nota Fiscal) : <<include>>    
+    
+    
+    DepartmentManager -- (Consolidar Compras)
+    DepartmentManager -- (Autorizar Compra de Produtos)
+    DepartmentManager -- (Cadastrar Produto)
+    DepartmentManager -- (Cadastrar Fornecedores)
+
+    User -- (Emitir Relatório de Estoque)
+    User -- (Solicitar Compra de Produtos)
+    
+    (Solicitar Compra de Produtos) --> (Consolidar Compras)
+    
+    
+    (Emitir Relatório de Estoque) -- (Consolidar Compras)
+    
+    
+    (Consolidar Compras) <-- (Autorizar Compra de Produtos)
+   
+  
+    SystemAdministrator -- (Cadastrar Usuário)
+
+}
+
+@enduml
+

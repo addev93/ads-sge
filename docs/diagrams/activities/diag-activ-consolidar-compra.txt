@@ -1,0 +1,13 @@
+@startuml
+start
+:Receber Pedido de Compra;
+if (Verificar Aprovação?) then (sim)
+  :Autorizar Compra;
+  :Enviar Notificação ao Estoquista;
+else (não)
+  :Rejeitar Pedido;
+  :Enviar Mensagem de Rejeição ao Usuário;
+endif
+stop
+@enduml
+

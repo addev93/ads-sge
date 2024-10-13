@@ -1,0 +1,13 @@
+@startuml
+start
+:Receber Nota Fiscal;
+:Validar Nota Fiscal;
+if (Nota Fiscal Válida?) then (sim)
+  :Registrar Produtos no Estoque;
+  :Atualizar Quantidade de Produtos;
+else (não)
+  :Mostrar Mensagem de Erro;
+endif
+stop
+@enduml
+

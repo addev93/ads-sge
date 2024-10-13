@@ -1,0 +1,12 @@
+@startuml
+start
+:Receber ID do Produto;
+:Consultar Banco de Dados;
+if (Produto Encontrado?) then (sim)
+  :Mostrar Localização do Produto;
+else (não)
+  :Mostrar Mensagem de Erro;
+endif
+stop
+@enduml
+

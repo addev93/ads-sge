@@ -1,0 +1,9 @@
+@startuml
+start
+:Selecionar Produtos para Compra;
+:Inserir Quantidade;
+:Enviar Solicitação de Compra;
+:Notificar Gerente de Setor;
+stop
+@enduml
+

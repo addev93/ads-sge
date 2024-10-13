@@ -1,0 +1,11 @@
+@startuml
+start
+:Inserir Credenciais;
+if (Credenciais Válidas?) then (sim)
+  :Acessar Sistema;
+else (não)
+  :Mostrar Mensagem de Erro;
+endif
+stop
+@enduml
+

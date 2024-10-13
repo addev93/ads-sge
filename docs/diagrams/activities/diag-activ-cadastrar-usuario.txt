@@ -1,0 +1,13 @@
+@startuml
+start
+:Inserir Dados do Usuário;
+:Validar Dados;
+if (Dados Válidos?) then (sim)
+  :Salvar Dados no Sistema;
+  :Notificar Usuário sobre Cadastro;
+else (não)
+  :Mostrar Mensagem de Erro;
+endif
+stop
+@enduml
+

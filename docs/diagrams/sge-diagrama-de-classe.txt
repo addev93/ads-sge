@@ -1,0 +1,107 @@
+@startuml
+
+class Usuario {
+    +id: int
+    +nome: string
+    +nomeDeUsuario: string
+    +email: string
+    +senha: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): Usuario
+    +remover(): void
+}
+
+class Produto {
+    +id: int
+    +produto: string
+    +descricao: string
+    +categoria: string
+    +fornecedor1: string
+    +fornecedor2: string
+    +fornecedor3: string
+    +localizacaoEstoque: string
+    +saldo: decimal
+    +criar(): void
+    +atualizar(): void
+    +procurar(): Produto
+    +remover(): void
+}
+
+class Categoria {
+    +id: int
+    +nome: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): Categoria
+    +remover(): void
+}
+
+class Fornecedor {
+    +id: int
+    +cnpj: string
+    +nomeFantasia: string
+    +razaoSocial: string
+    +endereco1: string
+    +endereco2: string
+    +telefone1: string
+    +telefone2: string
+    +representante: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): Fornecedor
+    +remover(): void
+}
+
+class Movimentacao {
+    +id: int
+    +produto: int
+    +quantidade: decimal
+    +valorUnitario: decimal
+    +tipo: string
+    +notaFiscal: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): Movimentacao
+    +remover(): void
+}
+
+class SolicitacaoDeCompra {
+    +id: int
+    +produto: int
+    +quantidade: decimal
+    +solicitante: string
+    +aprovador: string
+    +situacao: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): SolicitacaoDeCompra
+    +remover(): void
+}
+
+class PedidoDeCompra {
+    +id: int
+    +numeroDoPedido: string
+    +produto: int
+    +quantidade: decimal
+    +valorUnitario: decimal
+    +valorTotal: decimal
+    +solicitante: string
+    +fornecedor: int
+    +notaFiscal: string
+    +criar(): void
+    +atualizar(): void
+    +procurar(): PedidoDeCompra
+    +remover(): void
+}
+
+' Relacionamentos
+Usuario "1" -- "0..*" Movimentacao : registra
+Produto "1" -- "0..*" Movimentacao : contém
+Produto "1" -- "0..*" SolicitacaoDeCompra : é
+Produto "1" -- "0..*" PedidoDeCompra : é
+Categoria "1" -- "0..*" Produto : classifica
+Fornecedor "1" -- "0..*" Produto : fornece
+
+@enduml
+

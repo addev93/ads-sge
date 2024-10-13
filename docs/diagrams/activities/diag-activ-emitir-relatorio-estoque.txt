@@ -1,0 +1,9 @@
+@startuml
+start
+:Solicitar Relatório de Estoque;
+:Consultar Dados do Estoque;
+:Gerar Relatório;
+:Mostrar Relatório ao Usuário;
+stop
+@enduml
+

@@ -1,0 +1,183 @@
+[
+    {
+        "code": "P001",
+        "description": "Notebook Dell Inspiron 15",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor A1",
+        "supplier2": "Fornecedor A2",
+        "supplier3": "Fornecedor A3",
+        "address": "R01-P07"
+    },
+    {
+        "code": "P002",
+        "description": "Smartphone Samsung Galaxy S21",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor B1",
+        "supplier2": "Fornecedor B2",
+        "supplier3": "Fornecedor B3",
+        "address": "R02-P14"
+    },
+    {
+        "code": "P003",
+        "description": "Cafeteira Expresso Nespresso",
+        "category": "Eletrodomésticos",
+        "supplier1": "Fornecedor C1",
+        "supplier2": "Fornecedor C2",
+        "supplier3": "Fornecedor C3",
+        "address": "R03-P21"
+    },
+    {
+        "code": "P004",
+        "description": "Fone de Ouvido Bluetooth Sony",
+        "category": "Acessórios",
+        "supplier1": "Fornecedor D1",
+        "supplier2": "Fornecedor D2",
+        "supplier3": "Fornecedor D3",
+        "address": "R04-P28"
+    },
+    {
+        "code": "P005",
+        "description": "Teclado Mecânico Razer",
+        "category": "Acessórios",
+        "supplier1": "Fornecedor E1",
+        "supplier2": "Fornecedor E2",
+        "supplier3": "Fornecedor E3",
+        "address": "R05-P35"
+    },
+    {
+        "code": "P006",
+        "description": "Monitor LG 27\" 4K",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor F1",
+        "supplier2": "Fornecedor F2",
+        "supplier3": "Fornecedor F3",
+        "address": "R06-P42"
+    },
+    {
+        "code": "P007",
+        "description": "Impressora Canon Multifuncional",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor G1",
+        "supplier2": "Fornecedor G2",
+        "supplier3": "Fornecedor G3",
+        "address": "R07-P49"
+    },
+    {
+        "code": "P008",
+        "description": "Mesa de Escritório Ergonômica",
+        "category": "Móveis",
+        "supplier1": "Fornecedor H1",
+        "supplier2": "Fornecedor H2",
+        "supplier3": "Fornecedor H3",
+        "address": "R08-P56"
+    },
+    {
+        "code": "P009",
+        "description": "Cadeira Gamer Redragon",
+        "category": "Móveis",
+        "supplier1": "Fornecedor I1",
+        "supplier2": "Fornecedor I2",
+        "supplier3": "Fornecedor I3",
+        "address": "R09-P63"
+    },
+    {
+        "code": "P010",
+        "description": "Roteador TP-Link AC750",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor J1",
+        "supplier2": "Fornecedor J2",
+        "supplier3": "Fornecedor J3",
+        "address": "R10-P70"
+    },
+    {
+        "code": "P011",
+        "description": "Mouse Gamer Logitech G502",
+        "category": "Acessórios",
+        "supplier1": "Fornecedor K1",
+        "supplier2": "Fornecedor K2",
+        "supplier3": "Fornecedor K3",
+        "address": "R11-P77"
+    },
+    {
+        "code": "P012",
+        "description": "Câmera Digital Canon EOS M50",
+        "category": "Fotografia",
+        "supplier1": "Fornecedor L1",
+        "supplier2": "Fornecedor L2",
+        "supplier3": "Fornecedor L3",
+        "address": "R12-P84"
+    },
+    {
+        "code": "P013",
+        "description": "Projetor Epson Home Cinema",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor M1",
+        "supplier2": "Fornecedor M2",
+        "supplier3": "Fornecedor M3",
+        "address": "R13-P91"
+    },
+    {
+        "code": "P014",
+        "description": "Colchão Casal Ortobom",
+        "category": "Móveis",
+        "supplier1": "Fornecedor N1",
+        "supplier2": "Fornecedor N2",
+        "supplier3": "Fornecedor N3",
+        "address": "R14-P98"
+    },
+    {
+        "code": "P015",
+        "description": "TV Samsung 55\" 4K",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor O1",
+        "supplier2": "Fornecedor O2",
+        "supplier3": "Fornecedor O3",
+        "address": "R15-P105"
+    },
+    {
+        "code": "P016",
+        "description": "Caixa de Som JBL Flip 5",
+        "category": "Acessórios",
+        "supplier1": "Fornecedor P1",
+        "supplier2": "Fornecedor P2",
+        "supplier3": "Fornecedor P3",
+        "address": "R16-P112"
+    },
+    {
+        "code": "P017",
+        "description": "Kit de Ferramentas Tramontina",
+        "category": "Ferramentas",
+        "supplier1": "Fornecedor Q1",
+        "supplier2": "Fornecedor Q2",
+        "supplier3": "Fornecedor Q3",
+        "address": "R17-P119"
+    },
+    {
+        "code": "P018",
+        "description": "Relógio Smartwatch Amazfit",
+        "category": "Eletrônicos",
+        "supplier1": "Fornecedor R1",
+        "supplier2": "Fornecedor R2",
+        "supplier3": "Fornecedor R3",
+        "address": "R18-P126"
+    },
+    {
+        "code": "P019",
+        "description": "Bicicleta Aro 29 Caloi",
+        "category": "Esportes",
+        "supplier1": "Fornecedor S1",
+        "supplier2": "Fornecedor S2",
+        "supplier3": "Fornecedor S3",
+        "address": "R19-P133"
+    },
+    {
+        "code": "P020",
+        "description": "Livro \"Python para Iniciantes\"",
+        "category": "Livros",
+        "supplier1": "Fornecedor T1",
+        "supplier2": "Fornecedor T2",
+        "supplier3": "Fornecedor T3",
+        "address": "R20-P140"
+    }
+]
+
