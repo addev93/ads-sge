@@ -1,13 +1,14 @@
 class DataTesting:
 
     def __init__(self):
-        self.suppliers_data = self.suppliers()
-        self.categories_data = self.categories()
-        self.products_data = self.products()
-        self.movements_data = self.movements()
+        self.suppliers = self.suppliers()
+        self.categories = self.categories()
+        self.products = self.products()
+        self.movements = self.movements()
+        self.users = self.users()
 
     def suppliers(self):
-
+        """Dados de fornecedores para teste."""
         suppliers_data = [
         ("12.345.678/0001-90", "Fornecedor A", "Fornecedor A LTDA", "Rua Principal, 123, Apto 101", "1111-1111", None, "2222-2222", "João Silva"),
         ("98.765.432/0001-01", "Fornecedor B", "Fornecedor B S.A.", "Avenida Secundária, 456", "3333-3333", None, None, "Maria Oliveira"),
@@ -23,7 +24,7 @@ class DataTesting:
         return suppliers_data
     
     def categories(self):
-
+        """Dados de categorias para teste."""
         categories_data = [
         "Eletrônicos",
         "Roupas",
@@ -39,7 +40,7 @@ class DataTesting:
         return categories_data
 
     def products(self):
-
+        """Dados de produtos para teste."""
         products_data = [
         ("P001", "Produto A", "Eletrônicos", "Fornecedor A", "", "", ""),
         ("P002", "Produto B", "Roupas", "Fornecedor B", "Fornecedor C", "", ""),
@@ -55,7 +56,7 @@ class DataTesting:
         return products_data
     
     def movements(self):
-
+        """Dados de movimentos para teste."""
         movements_data = [
         ("P001", 10, "stockIn", "INV001"),
         ("P002", 5, "stockOut", "INV002"),
@@ -70,4 +71,14 @@ class DataTesting:
         ]
 
         return movements_data
-
+    
+    def users(sefl):
+        """Dados de usuários para teste."""
+        users_data = [
+        ("John", "john_doe", "john@example.com", "securepassword1"),
+        ("Jane", "jane_smith", "jane@example.com", "securepassword2"),
+        ("Alice", "alice_jones", "alice@example.com", "securepassword3"),
+        ("Bob", "bob_brown", "bob@example.com", "securepassword4"),
+        ("Charlie", "charlie_black", "charlie@example.com", "securepassword5")
+        ]
+        return users_data
