@@ -28,34 +28,34 @@ class ServiceProductManager:
 
         # Verifica se existe o ID da categoria e ID fornecedor 1 (são campos obrigatórios)
         if not category_id:
-            print(f'ServiceProductManager: produto {code} não cadastrado: "category_id" não encontrado.')
+            print(f'ServiceProductManager: Produto {code} não cadastrado: "category_id" não encontrado.')
             return None
         if not supplier1_id:
-            print(f'ServiceProductManager: produto {code} não cadastrado: "supplier1_id" não encontrado.')
+            print(f'ServiceProductManager: Produto {code} não cadastrado: "supplier1_id" não encontrado.')
             return None
            
         # Chama o método 'create' para cadastrar o produto.
         try:
             self.product_repos_manager.create(code, description, category_id, supplier1_id, supplier2_id, supplier3_id, stock_address)
         except Exception as e:
-            print(f'ServiceProductManager: erro ao cadastrar produto {code}. Erro: {e}.')
+            print(f'ServiceProductManager: Erro ao cadastrar produto {code}. Erro: {e}.')
 
     def search_product(self, term='', by=''):
         try:
             if by == 'code':
                 product = self.product_repos_manager.search_by_code(term)
                 if not product:
-                    print(f'ServiceProductManager: nenhum produto localizado para o código "{term}".')
+                    print(f'ServiceProductManager: Nenhum produto localizado para o código "{term}".')
             elif by == 'desc':
                 product = self.product_repos_manager.search_by_description(term)
                 if not product:
-                    print(f'ServiceProductManager: nenhum produto localizado para a descrição "{term}".')
+                    print(f'ServiceProductManager: Nenhum produto localizado para a descrição "{term}".')
             elif not by:
                 product = self.product_repos_manager.list()
                 if not product:
-                    print('ServiceProductManager: nenhum produto localizado.')
+                    print('ServiceProductManager: Nenhum produto localizado.')
         except Exception as e:
-            print(f'ServiceProductManager: erro ao localizar produto(s). Erro: {e}.')
+            print(f'ServiceProductManager: Erro ao localizar produto(s). Erro: {e}.')
 
         return product
 
@@ -84,19 +84,19 @@ class ServiceProductManager:
                     new_value_id = new_value_data[0][0]
                     # Aplica o método 'update'
                     self.product_repos_manager.update(product_id, f'{field}_ID', new_value_id)
-                    print(f'ServiceProductManager: campo {field} do produto {code} atualizado com sucesso.')
+                    print(f'ServiceProductManager: Campo {field} do produto {code} atualizado com sucesso.')
                 else:
-                    print(f'ServiceProductManager: campo {field} pertencente ao produto {code} não localizado.')
+                    print(f'ServiceProductManager: Campo {field} pertencente ao produto {code} não localizado.')
             
             # Aplica o método 'update' para qualquer campo que não seja chave estrangeira.
             else:
                 if self.product_repos_manager.update(product_id, field, new_value):
-                    print(f'ServiceProductManager: campo {field} do produto {code} atualizado com sucesso.')
+                    print(f'ServiceProductManager: Campo {field} do produto {code} atualizado com sucesso.')
                 else:
-                    print(f'ServiceProductManager: campo {field} do produto {code} não atualizado.')
+                    print(f'ServiceProductManager: Campo {field} do produto {code} não atualizado.')
         
         except Exception as e:
-            print(f'ServiceProductManager: erro ao atualizar o campo {field} do produto {code}. Erro: {e}.')
+            print(f'ServiceProductManager: Erro ao atualizar o campo {field} do produto {code}. Erro: {e}.')
 
     def delete_product(self, code):
         """Deleta um registro de produto."""
@@ -106,8 +106,8 @@ class ServiceProductManager:
             if product: 
                 product_id = product[0][0]
                 self.product_repos_manager.delete(product_id)
-                print(f'ServiceProductManager: produto {code} deletado com sucesso.')
+                print(f'ServiceProductManager: Produto {code} deletado com sucesso.')
             else:
-                print(f'ServiceProductManager: nenhuma correspondência de produto para o código {code}.')
+                print(f'ServiceProductManager: Nenhuma correspondência de produto para o código {code}.')
         except Exception as e:
-            print(f'ServiceProductManager: erro ao deletar o produto {code}. Erro: {e}.')
+            print(f'ServiceProductManager: Erro ao deletar o produto {code}. Erro: {e}.')

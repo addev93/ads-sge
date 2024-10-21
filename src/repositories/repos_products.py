@@ -1,28 +1,19 @@
-from src.utils.table_exists import table_exists
+import logging
+logging.basicConfig(level=logging.INFO)
 
 class RepositoryProductManager:
     
     def __init__(self, connection):
         self.conn = connection
         self.cursor = self.conn.cursor()
-        self.table_exists = table_exists(self.cursor, 'RepositoryProductManager', 'Product')
         self.create_table()
-    
-    def table_exists(self, table_name):
-        """Verifica se a tabela existe no banco de dados."""
-        query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}';"
-        try:
-            self.cursor.execute(query)
-            return bool(self.cursor.fetchone())
-        except Exception as e:
-            print(f'RepositoryProductManager: erro ao verificar existência da tabela Product. Erro: {e}.')
 
     def create_table(self):
-        """Creates the Product table in the database if it does not exist."""
+        """Cria a tabela Product no banco de dados, se não existir."""
         query = '''
         CREATE TABLE IF NOT EXISTS Product (
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            Code TEXT NOT NULL,
+            Code VARCHAR(20) UNIQUE NOT NULL,
             Description TEXT,
             Category_ID INTEGER,
             Supplier1_ID INTEGER,
@@ -39,15 +30,12 @@ class RepositoryProductManager:
         try:
             self.cursor.execute(query)
             self.conn.commit()
-            if not self.table_exists:
-                print('RepositoryProductManager: tabela Product criada com sucesso.')
-            return True
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao criar tabela Product. Erro: {e}.')
+            logging.error(f'RepositoryProductManager: Erro ao criar tabela Product. Erro: {e}')
             return None
 
     def create(self, code, description, category_id, supplier1_id, supplier2_id=None, supplier3_id=None, stock_location=''):
-        """Method to create a new product."""
+        """Método para criar um novo produto."""
         query = '''
             INSERT INTO Product (Code, Description, Category_ID, Supplier1_ID, Supplier2_ID, Supplier3_ID, Stock_Location) 
             VALUES (?, ?, ?, ?, ?, ?, ?);
@@ -55,25 +43,24 @@ class RepositoryProductManager:
         try:
             self.cursor.execute(query, (code, description, category_id, supplier1_id, supplier2_id, supplier3_id, stock_location))
             self.conn.commit()
-            print(f'RepositoryProductManager: produto {code} cadastrado com sucesso.')
-            return True
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao cadastrar produto {code}. Erro: {e}.')
+            logging.error(f'RepositoryProductManager: Erro ao cadastrar produto {code}. Erro: {e}')
             return False
+        return True
 
     def list(self):
-        """Method to list all products."""
+        """Método para listar todos os produtos."""
         query = 'SELECT * FROM Product;'
         try:
             self.cursor.execute(query)
             products = self.cursor.fetchall()
             return products
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao listar produtos. Erro: {e}')
+            logging.error(f'RepositoryProductManager: Erro ao listar produtos. Erro: {e}')
             return None
 
     def search_by_description(self, string):
-        """Search for products by description."""
+        """Método para localizar produtos pela descrição."""
         query = '''
             SELECT * FROM Product WHERE Description LIKE ?
         '''
@@ -82,11 +69,11 @@ class RepositoryProductManager:
             products = self.cursor.fetchall()
             return products
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao localizar produto por descrição. Erro: {e}.')
+            logging.error(f'RepositoryProductManager: Erro ao localizar produto por descrição. Erro: {e}.')
             return None
 
     def search_by_code(self, code):
-        """Search for a product by code."""
+        """Retorna os dados de um produto no banco de dados pelo código do produto."""
         query = '''
             SELECT * FROM Product WHERE Code = ?
         '''
@@ -95,44 +82,54 @@ class RepositoryProductManager:
             product = self.cursor.fetchall()
             return product
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao localizar o produto {code}. Erro: {e}.')
+            logging.error(f'RepositoryProductManager: Erro ao localizar o produto {code}. Erro: {e}.')
             return None
 
     def update(self, product_id, field, new_value):
-        """Method to update a specific product detail."""
-        valid_fields = ['Code', 'Description', 'Category_ID', 'Supplier1_ID', 'Supplier2_ID', 'Supplier3_ID', 'Stock_Location']
-        
-        if field not in valid_fields:
-            print(f'Campo {field} não é válido.')
-            return False
-        
+        """Método para atualizar um campo específico de um produto."""
         query = f'''
             UPDATE Product 
             SET {field} = ?
             WHERE ID = ?;
         '''
-        
         try:
             self.cursor.execute(query, (new_value, product_id))
             self.conn.commit()
-            print(f'RepositoryProductManager: o campo {field} foi atualizado para {new_value}.')
-            return True
         except Exception as e:
-            print(f'RepositoryProductManager: erro ao atualizar o campo {field} do produto com id {product_id}. Erro: {e}.')
+            logging.error(f'RepositoryProductManager: Erro ao atualizar o campo {field} do produto com id {product_id}. Erro: {e}.')
             return False
+        return True
 
     def delete(self, product_id):
-        """Method to delete the product by ID."""
+        """Método para deletar um produto pelo ID."""
         query = '''
             DELETE FROM Product WHERE ID = ?;
         '''
         try:
             self.cursor.execute(query, (product_id,))
             self.conn.commit()
-            return True
-        except Exception:
+        except Exception as e:
+            logging.error(f'RepositoryProductManager: Erro ao deletar produto com id {product_id}. Erro: {e}.')
             return False
+        return True
+
+    def get_product_id(self, product_code):
+        """Método para retorna o ID de um produto pelo código."""
+        query = '''
+        SELECT ID FROM Product WHERE Code = ?;
+        '''
+        try:
+            self.cursor.execute(query, (product_code,))
+            result = self.cursor.fetchall()
+            if result:
+                return result[0][0]
+            else:
+                return None
+        except Exception as e:
+            logging.error(f'RepositoryProductManager: Erro ao buscar ID do produto {product_code}. Erro: {e}.')
+            return None
 
     def close(self):
-        """Closes the database connection."""
+        """Método para fechar a conexão de um banco de dados."""
         self.conn.close()
+        logging.info('Conexão com o banco de dados fechada.')

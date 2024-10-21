@@ -27,7 +27,7 @@ class TestUsersServices(unittest.TestCase):
             os.remove(cls.db_path)  # Deleta o arquivo do banco de dados
     
     def test_create_user(self):
-        """Testa o registro de usuários no banco de dados."""
+        """Testa o registro de novos usuários."""
         for data in self.data.users:
             user = User(*data)
             self.user_manager.create_user(user)
@@ -37,16 +37,18 @@ class TestUsersServices(unittest.TestCase):
         self.assertEqual(users[0][1], 'John') # Verifica o nome do primeiro usuário.
 
     def test_edit_user(self):
-
+        """Testa a edição de usuários."""
         user = User(name='João Virino', username='joao_virino', email='joao.virino@email.com', password='securepass78')
-        # attributes = user.attributes()
+       
         self.user_manager.create_user(user)
         self.user_manager.edit_user('Name', 'João Virino', 'João Firmino')
+        self.user_manager.edit_user('Username', 'joao_virino', 'joao_firmino')
 
-        updated_user = self.user_manager.search_users('Username', 'joao_virino', all=False)
-    
+        updated_user = self.user_manager.search_users('Username', 'joao_firmino', all=False)
+
         self.assertEqual(len(updated_user), 1) # verifica se retornou um usuário
-        self.assertEqual(updated_user[0][1], 'João Firmino') # Verifica se o nome está atualizado.
+        self.assertEqual(updated_user[0][1], 'João Firmino') # Verifica se o nome está atualizado
+        self.assertEqual(updated_user[0][2], 'joao_firmino') # Verifica se o nome de usuário foi atualizado
 
     def test_delete_user(self):
         """Testa a exclusão de usuários."""

@@ -1,3 +1,6 @@
+import logging
+logging.basicConfig(level=logging.INFO)
+
 class RepositoryMovementTypes:
     
     def __init__(self, connection):
@@ -33,7 +36,7 @@ class RepositoryMovementTypes:
             
             return True
         except Exception as e:
-            print(f'RepositoryMovementTypes: Erro ao criar tabela Movement_Types. Erro: {e}.')
+            logging.error(f'RepositoryMovementTypes: Erro ao criar tabela Movement_Types. Erro: {e}.')
             return None
         
     def list(self):
@@ -45,4 +48,20 @@ class RepositoryMovementTypes:
             self.cursor.execute(query)
             return self.cursor.fetchall()
         except Exception as e:
-            print(f'RepositoryMovementTypes: Erro ao listar tipos de movimento. Erro: {e}.')
+            logging.error(f'RepositoryMovementTypes: Erro ao listar tipos de movimento. Erro: {e}.')
+
+    def get_movement_id(self, movement_type):
+        """Retorna o ID do movimento."""
+        query = '''
+        SELECT ID FROM Movement_Types WHERE Type = ?;
+        '''
+        try:
+            self.cursor.execute(query, (movement_type,))
+            result = self.cursor.fetchone()
+            if result:
+                return result[0]
+            else:
+                return None
+        except Exception as e:
+            logging.error(f'RepositoryMovementTypes: Erro ao buscar ID do movimento. Erro: {e}.')
+            return None

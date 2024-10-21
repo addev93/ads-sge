@@ -1,18 +1,17 @@
 class Movement:
-    """Represents a movement in the database."""
-    
+    """Representa um movimento de estoque na entrada de dados."""
     def __init__(self, product_code: str = None, quantity: float = None,
                  movement_type: str = None, invoice: str = None):
-        self.product_id = product_code        # ID do produto, não nulo
-        self.quantity = quantity              # Quantidade, não nula
-        self.type_id = movement_type    # Tipo do movimento (entrada/saída), não nulo
-        self.invoice = invoice                # Nota fiscal (opcional)
+        self.product_code = product_code
+        self.quantity = quantity
+        self.movement_type = movement_type
+        self.invoice = invoice
 
     def attributes(self):
-        """Returns the attributes of the movement as a dictionary."""
+        """Retorna os atributos do objeto movimento como um dicionário."""
         return vars(self)
 
     def __str__(self):
-        """String representation of the movement data."""
-        return (f'Product_ID={self.product_id}, '
-                f'Quantity={self.quantity}, Type="{self.type_id}", Invoice="{self.invoice}")')
+        """String que representa os atributos do movimento."""
+        return (f'Product_Code="{self.product_code}",'
+                f'Quantity={self.quantity}, Type="{self.movement_type}", Invoice="{self.invoice}")')

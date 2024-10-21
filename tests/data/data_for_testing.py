@@ -59,15 +59,15 @@ class DataTesting:
         """Dados de movimentos para teste."""
         movements_data = [
         ("P001", 10, "stockIn", "INV001"),
-        ("P002", 5, "stockOut", "INV002"),
-        ("P003", 20, "stockIn", "INV003"),
-        ("P004", 15, "stockOut", "INV004"),
-        ("P005", 8, "adjustment", "INV005"),
-        ("P006", 12, "stockOut", "INV006"),
-        ("P007", 10, "stockIn", "INV007"),
-        ("P008", 3, "return", "INV008"),
-        ("P009", 7, "stockIn", "INV009"),
-        ("P010", 2, "adjustment", "INV010")
+        ("P001", 5, "stockIn", "INV002"),
+        ("P002", 20, "stockIn", "INV003"),
+        ("P002", 15, "stockIn", "INV004"),
+        ("P003", 12, "stockIn", "INV005"),
+        ("P003", 8, "adjustment", "INV006"),
+        ("P004", 10, "stockIn", "INV007"),
+        ("P004", 3, "return", "INV008"),
+        ("P005", 7, "stockIn", "INV009"),
+        ("P005", 2, "stockOut", "INV010")
         ]
 
         return movements_data

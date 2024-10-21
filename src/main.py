@@ -4,6 +4,7 @@ from rich.console import Console
 from utils.db_generator import db_generator
 from utils.clear_screen import clear_screen
 from handlers.handler_main_menu import main_menu_handler
+from auth.auth import Auth
 
 console = Console()
 

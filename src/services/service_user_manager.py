@@ -46,7 +46,7 @@ class ServiceUserManager:
             
             # Obtém o ID do usuário pelo campo fornecido
             user_id = self.get_user_id(current_value, by=field)
-            print(user_id)
+       
             if not user_id:
                 logging.info(f'{self.class_name}: ID do usuário não localizado.')
                 return False
