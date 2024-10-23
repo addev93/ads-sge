@@ -35,7 +35,7 @@ class RepositoryProductManager:
             return None
 
     def create(self, code, description, category_id, supplier1_id, supplier2_id=None, supplier3_id=None, stock_location=''):
-        """Método para criar um novo produto."""
+        """Método para registrar um novo produto no banco de dados."""
         query = '''
             INSERT INTO Product (Code, Description, Category_ID, Supplier1_ID, Supplier2_ID, Supplier3_ID, Stock_Location) 
             VALUES (?, ?, ?, ?, ?, ?, ?);

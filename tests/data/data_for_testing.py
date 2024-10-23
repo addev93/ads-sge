@@ -6,6 +6,7 @@ class DataTesting:
         self.products = self.products()
         self.movements = self.movements()
         self.users = self.users()
+        self.purchase_request = self.purchase_request()
 
     def suppliers(self):
         """Dados de fornecedores para teste."""
@@ -82,3 +83,19 @@ class DataTesting:
         ("Charlie", "charlie_black", "charlie@example.com", "securepassword5")
         ]
         return users_data
+    
+    def purchase_request(self):
+        """Dados de Solicitação de Compra para teste."""
+        purchase_request_data = [
+            ("P001", 10, "john_doe"),
+            ("P002", 20, "jane_smith"),
+            ("P003", 15, "alice_jones"),
+            ("P004", 50, "bob_brown"),
+            ("P005", 10, "charlie_black"),
+            ("P005", 15, "john_doe"),
+            ("P007", 25, "jane_smith"),
+            ("P008", 30, "alice_jones"),
+            ("P009", 40, "bob_brown"),
+            ("P010", 80, "charlie_black")
+        ]
+        return purchase_request_data

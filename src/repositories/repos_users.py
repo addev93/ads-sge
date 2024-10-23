@@ -10,6 +10,7 @@ class RepositoryUserManager:
         self.create_table()
 
     def create_table(self):
+        """Cria a tabela User no banco de dados, se não existir."""
         query = '''
         CREATE TABLE IF NOT EXISTS User (
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,6 +28,7 @@ class RepositoryUserManager:
             return False 
         
     def create(self, name, username, email, password):
+        """Registra um novo usuário."""
         query = '''
             INSERT INTO User (Name, Username, Email, Password) VALUES (?, ?, ?, ?);
         '''
@@ -39,7 +41,8 @@ class RepositoryUserManager:
             return False
 
     def list(self):
-        query = 'SELECT * FROM User;'
+        """Lista todos os usuários"""
+        query = 'SELECT Name, Username, Email FROM User;'
         try:
             self.cursor.execute(query)
             return self.cursor.fetchall()
@@ -58,6 +61,7 @@ class RepositoryUserManager:
             return False
 
     def update(self, user_id, field, new_value):
+        """Atualiza um campo específico do usuário."""
         query = f'''
             UPDATE User SET {field} = ? WHERE ID = ?;
         '''
@@ -70,6 +74,7 @@ class RepositoryUserManager:
             return False
     
     def delete(self, user_id):
+        """Deleta um usuário."""
         query = '''
             DELETE FROM User WHERE ID = ?;
         '''
@@ -81,6 +86,22 @@ class RepositoryUserManager:
             logging.error(f'{self.class_name}: Erro ao deletar usuário. Erro: {e}.')
             return False
 
+    def get_user_id(self, user_name):
+        """Busca o ID do usuário pelo Username."""
+        query = '''
+        SELECT ID FROM User WHERE Username = ?
+        '''
+        try:
+            self.cursor.execute(query, (user_name,))
+            result = self.cursor.fetchone()
+            if result:
+                return result[0]
+            else:
+                None
+        except Exception as e:
+            logging.error(f'{self.class_name}: Erro ao localizar o ID do usuário. Erro: {e}.')
+            return None
+    
     def close(self):
-        """Closes the database connection."""
+        """Fecha a conexão com o banco de dados."""
         self.conn.close()
